@@ -25,7 +25,7 @@ def generate_str_file(chunk_number, time, path):
     f.write(f'{chunk_number + 1}\n')
     begin = miliseconds_to_time_str(time[0])
     end = miliseconds_to_time_str(time[1])
-    f.write(f'{begin} --> {end}')
+    f.write(f'{begin} --> {end}\n')
     f.close()
 
 
