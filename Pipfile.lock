@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cc4f8ae79a4527a878ae4d28164db910bf411931492f82a1d4b07a4310a338ea"
+            "sha256": "9b92e71415fc4d31dc246ccc7a63db59cbe663f33cb7fa7c868f00f71ccae629"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -114,7 +114,7 @@
                 "sha256:4bc1257abe5d8c9ef89132dccd9d783c1c0bdbbcfb98c0e5fe84e8b7b9ee4975",
                 "sha256:709c18f800981e4286abe4bd86b6c9b5bb6e285b6b933b5ba0962ef8e7994058"
             ],
-            "markers": "python_version >= '3.5'",
+            "markers": "python_version >= '3.4'",
             "version": "==2.14.1"
         },
         "imageio-ffmpeg": {
@@ -128,6 +128,13 @@
             ],
             "markers": "python_version >= '3.4'",
             "version": "==0.4.5"
+        },
+        "keras": {
+            "hashes": [
+                "sha256:744d39dc6577dcd80ff4a4d41549e92b77d6a17e0edd58a431d30656e29bc94e"
+            ],
+            "index": "pypi",
+            "version": "==2.8.0"
         },
         "moviepy": {
             "hashes": [
