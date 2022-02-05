@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+moviepy = "==1.0.3"
+numpy = "==1.19.5"
+pydub = "==0.25.1"
+soundfile = "==0.10.3.post1"
+Wave = "==0.0.2"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
