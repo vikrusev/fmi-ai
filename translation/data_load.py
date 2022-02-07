@@ -1,6 +1,6 @@
 from os.path import join as path_join
 
-import collections
+from collections import Counter
 
 # load dataset from file
 def read_dataset(path):
@@ -24,11 +24,13 @@ def sample_sentences(sentences):
         for key in sentences.keys():
             print('vocab_{} Line {}: {}'.format(key, sample_i + 1, sentences[key][sample_i]))
 
+    print()
+
 
 # count and print total, unique and 10 most common words
 def complexity_of_data(sentences):
     for key in sentences.keys():
-        word_counter = collections.Counter([word for sentence in sentences[key] for word in sentence.split()])
+        word_counter = Counter([word for sentence in sentences[key] for word in sentence.split()])
 
         print('{} {} words.'.format(key, len([word for sentence in sentences[key] for word in sentence.split()])))
         print('{} unique {} words.'.format(len(word_counter), key))

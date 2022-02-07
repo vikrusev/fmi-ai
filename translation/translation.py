@@ -1,11 +1,9 @@
 from os.path import join as path_join
 
 import translation.data_load as data_load
-import translation.project_tests as tests
+import translation.pre_process as pre_process
 
 import numpy as np
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
 from keras.models import Model
 from keras.layers import GRU, Input, Dense, TimeDistributed, Activation, RepeatVector, Bidirectional
 from keras.layers.embeddings import Embedding
@@ -15,23 +13,24 @@ from keras.losses import sparse_categorical_crossentropy
 
 sentences = { }
 
-def initialize_sentences(main, secondaries):
+def initialize_sentences(main, to):
     sentences[main] = []
-
-    for lang in secondaries:
-        sentences[lang] = []
+    sentences[to] = []
 
 def translate(translate_from, *translate_to):
-    initialize_sentences(translate_from, translate_to)
+    for lang in translate_to:
+        initialize_sentences(translate_from, lang)
 
-    data_load.load_data(path_join('translation', 'vocabularies'), sentences)
-    print('--- Dataset loaded\n')
+        data_load.load_data(path_join('translation', 'vocabularies'), sentences)
+        print('--- Dataset loaded\n')
 
-    # print sample sentences
-    print("--- Sample sentences\n")
-    data_load.sample_sentences(sentences)
-    print()
+        # print sample sentences
+        print("--- Sample sentences")
+        data_load.sample_sentences(sentences)
 
-    # evaluate complexity of data
-    print("--- Complexity of data\n")
-    data_load.complexity_of_data(sentences)
+        # evaluate complexity of data
+        print("--- Complexity of data")
+        data_load.complexity_of_data(sentences)
+
+        preproc_sentences, tokenizers = pre_process.preprocess(sentences)
+        print('--- Data preprocessed')
