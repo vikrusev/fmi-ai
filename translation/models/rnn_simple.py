@@ -8,16 +8,17 @@ from tensorflow.keras.optimizers import Adam
 
 # import translation.project_tests as tests
 
-def simple_model(input_shape, french_vocab_size):
+def simple_model(input_shape, vocab_size_y):
     learning_rate = 1e-3
 
     input_seq = Input(input_shape[1:])
     rnn = GRU(64, return_sequences = True)(input_seq)
-    logits = TimeDistributed(Dense(french_vocab_size))(rnn)
+    logits = TimeDistributed(Dense(vocab_size_y))(rnn)
 
     model = Model(input_seq, Activation('softmax')(logits))
-    model.compile(loss = sparse_categorical_crossentropy, 
-                optimizer = Adam(learning_rate), 
+
+    model.compile(loss = sparse_categorical_crossentropy,
+                optimizer = Adam(learning_rate),
                 metrics = ['accuracy'])
 
     return model
