@@ -1,4 +1,5 @@
 from preparation import chunk_audio, get_audio
+from translation.translation import translate
 import os
 
 filename_video = 'phone-message-jacko-its-pete.mp4'
@@ -17,4 +18,7 @@ if not os.path.exists(str_path):
 get_audio(filename_video, filename_audio)
 chunk_audio(filename_audio, wav_path, str_path)
 
-
+# define languages here
+# the program expects to find vocabulary files in /translations/vocabulary/vocab_{lang}
+# the first argument is the main language (translate_from)
+translate('english', 'french')
