@@ -43,3 +43,19 @@ def simple_RNN_model(sentences, max_sequence_lengths, vocabulary_sizes):
     model.fit(tmp_x, sent_y, batch_size=1024, epochs=10, validation_split=0.2)
 
     return model, tmp_x
+
+def embedding_RNN_model():
+    # TODO
+    return
+
+def bidirectional_RNN_model():
+    # TODO
+    return
+
+def encoder_decoder_RNN_model():
+    # TODO
+    return
+
+def embedding_bidirectional_RNN_model():
+    # TODO
+    return

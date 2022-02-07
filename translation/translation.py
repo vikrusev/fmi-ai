@@ -23,7 +23,19 @@ def logits_to_text(logits, tokenizer):
     return ' '.join([index_to_words[prediction] for prediction in np_argmax(logits, 1)])
 
 
-def translate(translate_from, *translate_to):
+# decide which type of model to be used
+def choose_model_function(model_enum):
+    return {
+        0: models.simple_RNN_model,
+        1: models.embedding_RNN_model,
+        2: models.bidirectional_RNN_model,
+        3: models.encoder_decoder_RNN_model,
+        4: models.embedding_bidirectional_RNN_model,
+    }[model_enum.value]
+
+
+# main function
+def translate(chosen_model, translate_from, *translate_to):
     for lang in translate_to:
         initialize_sentences(translate_from, lang)
 
@@ -42,7 +54,7 @@ def translate(translate_from, *translate_to):
         print('--- Data preprocessed')
 
         # train model
-        simple_rnn_model, padded_data = models.simple_RNN_model(preproc_sentences, max_sequence_lengths, vocabulary_sizes)
+        rnn_model, padded_data = choose_model_function(chosen_model)(preproc_sentences, max_sequence_lengths, vocabulary_sizes)
 
         # print prediction(s)
-        print(logits_to_text(simple_rnn_model.predict(padded_data[:1])[0], tokenizers[lang]))
+        print(logits_to_text(rnn_model.predict(padded_data[:1])[0], tokenizers[lang]))
