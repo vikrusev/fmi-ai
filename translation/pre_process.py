@@ -36,7 +36,7 @@ def preprocess(sentences):
 
     preprocess_x = pad(preprocess_x)
     preprocess_y = pad(preprocess_y)
-    
+
     # Keras's sparse_categorical_crossentropy function requires the labels to be in 3 dimensions
     preprocess_y = preprocess_y.reshape(*preprocess_y.shape, 1)
 
@@ -52,4 +52,6 @@ def preprocess(sentences):
     print('{} vocabulary size:'.format(lang_y), y_vocab_size)
 
     return { lang_x: preprocess_x, lang_y: preprocess_y },\
-        { lang_x: x_tk, lang_y: y_tk }
+        { lang_x: x_tk, lang_y: y_tk },\
+        { lang_x: max_x_sequence_length, lang_y: max_y_sequence_length },\
+        { lang_x: x_vocab_size, lang_y: y_vocab_size }
