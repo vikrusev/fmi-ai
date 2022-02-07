@@ -23,4 +23,4 @@ chunk_audio(filename_audio, wav_path, str_path)
 # define languages here
 # the program expects to find vocabulary files in /translations/vocabulary/vocab_{lang}
 # the first argument is the main language (translate_from)
-translate(Models.BIDIRECTIONAL, 'english', 'french')
+translate(Models.ENCODER_DECODER, 'english', 'french')
