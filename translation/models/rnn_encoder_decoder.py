@@ -8,7 +8,7 @@ from tensorflow.keras.optimizers import Adam
 
 # import translation.project_tests as tests
 
-def encdec_model(input_shape, output_sequence_length, french_vocab_size):
+def encdec_model(input_shape, output_sequence_length, vocab_size_y):
     learning_rate = 1e-3
 
     model = Sequential()
@@ -16,7 +16,7 @@ def encdec_model(input_shape, output_sequence_length, french_vocab_size):
     model.add(GRU(128, input_shape = input_shape[1:], return_sequences = False))
     model.add(RepeatVector(output_sequence_length))
     model.add(GRU(128, return_sequences = True))
-    model.add(TimeDistributed(Dense(french_vocab_size, activation = 'softmax')))
+    model.add(TimeDistributed(Dense(vocab_size_y, activation = 'softmax')))
 
     model.compile(loss = sparse_categorical_crossentropy,
                 optimizer = Adam(learning_rate),
