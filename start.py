@@ -8,6 +8,7 @@ speech_recognition_directory = 'speech_recognition/'
 
 wav_path = 'sound_files/'
 srt_path = 'srt_files/'
+
 wav_path_full = speech_recognition_directory + wav_path
 srt_path_full = speech_recognition_directory + srt_path
 
@@ -16,8 +17,7 @@ aa.chunk_audio()
 
 speech_recognition(srt_path_full, wav_path_full)
 
-
-# str_path = 'dummy_str_files/'
+# str_path = 'dummy_srt_files/'
 # construct_subtitres(filename_video, str_path)
 
 # define languages here
