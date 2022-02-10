@@ -130,6 +130,6 @@ dmypy.json
 
 # project-specific
 speech_recognition/sound_files
-speech_recognition/str_files
+speech_recognition/srt_files
 *.wav
 *.srt
