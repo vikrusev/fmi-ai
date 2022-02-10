@@ -13,6 +13,7 @@ torchaudio = "==0.10.1"
 comet_ml = "==3.25.0"
 keras = "*"
 tensorflow = "*"
+comet-ml = "*"
 
 [dev-packages]
 
