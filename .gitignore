@@ -128,6 +128,14 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
 # project-specific
 speech_recognition/sound_files
 speech_recognition/srt_files
