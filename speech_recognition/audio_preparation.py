@@ -60,7 +60,7 @@ class AudioAnalisys:
     def __init__(self, video_file, wav_path, str_path, sample_rate=16000):
         name = get_name(video_file)
         self.sound_format = 'wav'
-        self.str_format = 'str'
+        self.str_format = 'srt'
         self.filename = name + '-sound.' + self.sound_format
         get_audio(self.filename, video_file)
 
@@ -110,8 +110,8 @@ class AudioAnalisys:
             self.generate_str_file(i, time)
 
 
-def construct_subtitres(video_file, str_path):
-    filename = get_name(video_file) + '.str'
+def construct_subtitles(video_file, str_path):
+    filename = get_name(video_file) + '.srt'
     file_write = open(filename, 'w')
     for file in os.listdir(str_path):
         with open(str_path + file) as file_read:

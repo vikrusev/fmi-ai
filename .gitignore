@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# project-specific
+speech_recognition/sound_files
+speech_recognition/str_files
+*.wav
+*.srt
