@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1b88246ffbd757dde73441fe35a6861ebea24c6efa09f56d5a4f203e3e33f56b"
+            "sha256": "a8da7d8a8b814e5124d46e004b9831f0007458bf94e4800d6a508022a893bbaa"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -131,13 +131,19 @@
             ],
             "version": "==5.0"
         },
-        "colorama": {
+        "comet-ml": {
             "hashes": [
-                "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b",
-                "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"
+                "sha256:2620786d2bb22c409bb6d073ccf135d51c5c17767860d8519f021dcbfc18340a",
+                "sha256:e0f94fc5c8b5031feff004b29731e072d0ed3d08f2fd353310a5099fd95c6c43"
             ],
-            "markers": "platform_system == 'Windows'",
-            "version": "==0.4.4"
+            "index": "pypi",
+            "version": "==3.25.0"
+        },
+        "configobj": {
+            "hashes": [
+                "sha256:a2f5650770e1c87fb335af19a9b7eb73fc05ccf22144eb68db7d00cd2bcb0902"
+            ],
+            "version": "==5.0.6"
         },
         "comet-ml": {
             "hashes": [
