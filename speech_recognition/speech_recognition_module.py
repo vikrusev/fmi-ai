@@ -13,10 +13,10 @@ class CNNLayerNorm(nn.Module):
     def forward(self, x):
         # x (batch, channel, feature, time)
         feature_position = 2
-        contigues = True
-        x = DataManipulation.transpose_position(x, feature_position, contigues)
+        contiguous = True
+        x = DataManipulation.transpose_position(x, feature_position, contiguous)
         x = self.layer_norm(x)
-        return DataManipulation.transpose_position(x, feature_position, contigues)
+        return DataManipulation.transpose_position(x, feature_position, contiguous)
 
 
 class ResidualCNN(nn.Module):
@@ -87,7 +87,7 @@ class SpeechRecognitionModel(nn.Module):
         ])
         self.fully_connected = nn.Linear(n_feats * filter_size, rnn_dim)
         self.birnn_layers = nn.Sequential(*[
-            BidirectionalGRU(rnn_dim=rnn_dim * if i == 0 else rnn_dim * 2,
+            BidirectionalGRU(rnn_dim=rnn_dim if i == 0 else rnn_dim * 2,
                              hidden_size=rnn_dim, dropout=dropout, batch_first=(i == 0))
             for i in range(n_rnn_layers)
         ])

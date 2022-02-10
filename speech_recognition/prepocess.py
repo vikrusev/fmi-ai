@@ -12,9 +12,9 @@ def get_order(char):
 
 class DataManipulation:
     @staticmethod
-    def transpose_position(item, position, contigues=False):
+    def transpose_position(item, position, contiguous=False):
         item = item.transpose(position, position + 1)
-        return item.contigues() if contigues else item
+        return item.contiguous() if contiguous else item
 
     @staticmethod
     def squeeze(item, squeeze=True):

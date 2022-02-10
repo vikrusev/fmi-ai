@@ -9,7 +9,7 @@ from comet_ml import Experiment
 from train import train
 # from evaluate import evaluate
 
-def main(learning_rate=5e-4, epochs=10):
+def speech_recognition(learning_rate=5e-4, epochs=10):
 
     hparams = {
         'n_cnn_layers': 3,
@@ -27,7 +27,7 @@ def main(learning_rate=5e-4, epochs=10):
     torch.manual_seed(7)
     device = torch.device('cpu')
 
-    train_dataset = torchaudio.datasets.LIBRISPEECH('./train', url='train-clean-100')
+    train_dataset = torchaudio.datasets.LIBRISPEECH('./train', url='train-clean-100', download=True)
 
     train_dataset = DataLoader(dataset=train_dataset,
                                batch_size=hparams['batch_size'],
@@ -56,5 +56,4 @@ def main(learning_rate=5e-4, epochs=10):
     for epoch in range(1, epochs + 1):
         train(model, device, train_dataset, criterion, opt, schd, epoch, experiment)
 
-
-main()
+speech_recognition()
