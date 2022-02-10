@@ -129,8 +129,7 @@ dmypy.json
 .pyre/
 
 # project-specific
-/sound_files
-/str_files
-/speech_recognition/sound_files/
+speech_recognition/sound_files
+speech_recognition/str_files
 *.wav
 *.srt
