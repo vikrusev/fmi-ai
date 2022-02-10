@@ -103,7 +103,7 @@ class SpeechRecognitionModel(nn.Module):
         x = self.rescnn_layers(x)
         sizes = x.size()
         x = x.view(sizes[0], sizes[1] * sizes[2], sizes[3])  # (batch, feature, time)
-        x = DataManipulation.transpose_position(x, 2)  # (batch, time, feature)
+        x = DataManipulation.transpose_position(x, 1)  # (batch, time, feature)
         x = self.fully_connected(x)
         x = self.birnn_layers(x)
         x = self.classifier(x)
