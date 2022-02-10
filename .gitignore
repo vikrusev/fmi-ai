@@ -131,4 +131,6 @@ dmypy.json
 # project-specific
 /sound_files
 /str_files
+/speech_recognition/sound_files/
 *.wav
+*.srt

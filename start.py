@@ -1,20 +1,22 @@
-from preparation import chunk_audio, get_audio
-import os
+from speech_recognition.audio_preparation import AudioAnalisys, construct_subtitres
 
-filename_video = 'phone-message-jacko-its-pete.mp4'
-filename_audio = filename_video.split('.')[0] + '-sound.wav'
+from translation.translation import translate
+from models_enum import Models
 
-wav_path = 'sound_files'
-str_path = 'str_files'
+filename_video = 'speech.mp4'
+speech_recognition_directory = 'speech_recognition/'
 
-if not os.path.exists(wav_path):
-    os.mkdir(wav_path)
+wav_path = 'sound_files/'
+str_path = 'str_files/'
+wav_path_full = speech_recognition_directory + wav_path
 
-if not os.path.exists(str_path):
-    os.mkdir(str_path)
+aa = AudioAnalisys(filename_video, wav_path_full, str_path)
+aa.chunk_audio()
 
+# str_path = 'dummy_str_files/'
+# construct_subtitres(filename_video, str_path)
 
-get_audio(filename_video, filename_audio)
-chunk_audio(filename_audio, wav_path, str_path)
-
-
+# define languages here
+# the program expects to find vocabulary files in /translations/vocabulary/vocab_{lang}
+# the first argument is the main language (translate_from)
+translate(Models.EMBEDDING_BIDIRECTIONAL, 'english', 'french')
