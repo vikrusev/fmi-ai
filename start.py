@@ -21,5 +21,4 @@ aa.chunk_audio()
 # define languages here
 # the program expects to find vocabulary files in /translations/vocabulary/vocab_{lang}
 # the first argument is the main language (translate_from)
-translate(Models.EMBEDDING_BIDIRECTIONAL, 'english', 'french')
-
+translate('speech', Models.EMBEDDING_BIDIRECTIONAL, 'english', 'french')
