@@ -15,6 +15,8 @@ srt_path_full = speech_recognition_directory + srt_path
 aa = AudioAnalisys(filename_video, wav_path_full, srt_path_full)
 aa.chunk_audio()
 
+speech_recognition(srt_path_full, wav_path_full)
+
 # str_path = 'dummy_srt_files/'
 # construct_subtitres(filename_video, str_path)
 
