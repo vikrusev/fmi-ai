@@ -46,6 +46,8 @@ def predict_translations(srt_file_path, maxlen, model, x_tk):
 # main function
 def translate(srt_file_path, chosen_model, translate_from, *translate_to):
     for lang in translate_to:
+        print('--- Start translating from {} to {}'.format(translate_from, lang))
+
         initialize_sentences(translate_from, lang)
 
         data_load.load_data(path_join('translation', 'vocabularies'), sentences)
@@ -68,8 +70,12 @@ def translate(srt_file_path, chosen_model, translate_from, *translate_to):
         # print prediction(s)
         # print(logits_to_text(rnn_model.predict(padded_data[:1])[0], tokenizers[lang]))
 
+        filepath_save = '{}_{}.srt'.format(srt_file_path, lang)
         x_tk, y_tk = tokenizers.values()
         x_sent, _ = preproc_sentences.values()
         if chosen_model == Models.EMBEDDING_BIDIRECTIONAL:
             predictions, timings = predict_translations('{}.srt'.format(srt_file_path), x_sent.shape[-1], rnn_model, x_tk)
-            file_helper.build_translated_file('{}_{}.srt'.format(srt_file_path, lang), predictions, timings, y_tk)
+            file_helper.build_translated_file(filepath_save, predictions, timings, y_tk)
+
+        print('------ Translation from {} to {} completed!'.format(translate_from, lang))
+        print('------ Subtitles saved to {}'.format(filepath_save))
