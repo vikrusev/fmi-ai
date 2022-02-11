@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 import torch
 import torchaudio
 from torch import nn
@@ -5,7 +6,6 @@ from torch.nn import functional as F
 from torch.utils.data import DataLoader
 from speech_recognition_module import SpeechRecognitionModel, scheduler, optimizer
 from prepocess import training_data_processing, _blank_code
-from comet_ml import Experiment
 from train import train
 # from evaluate import evaluate
 
@@ -45,9 +45,16 @@ def speech_recognition(srt_directory, wav_directory, learning_rate=5e-4, epochs=
     #  print(model)
     print('Num Model Parameters', sum([param.nelement() for param in model.parameters()]))
 
-    experiment = Experiment(api_key='068a6rtlfjJeu9xgY5jdjAcgx',
-                            project_name='fmi-ai',
-                            workspace='ariolandi',)
+    comet_api_key = "068a6rtlfjJeu9xgY5jdjAcgx"  # add your api key here
+    project_name = "fmi-ai"
+    experiment_name = "speechrecognition-colab"
+    experiment = ""
+    if comet_api_key:
+        experiment = Experiment(api_key=comet_api_key, project_name=project_name, parse_args=False)
+        experiment.set_name(experiment_name)
+        experiment.display()
+    else:
+        experiment = Experiment(api_key='dummy_key', disabled=True)
 
     opt = optimizer(model.parameters(), hparams['learning_rate'])
     criterion = nn.CTCLoss(blank=_blank_code).to(device)
@@ -60,7 +67,6 @@ def speech_recognition(srt_directory, wav_directory, learning_rate=5e-4, epochs=
         train(model, device, train_dataset, criterion, opt, schd, epoch, experiment)
 
     # evaluate(srt_directory, wav_directory)
-
 
 
 speech_recognition('', '')
