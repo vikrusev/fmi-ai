@@ -1,6 +1,6 @@
 from torch import nn, optim
 from torch.nn import functional as F
-from prepocess import DataManipulation
+from speech_recognition.prepocess import DataManipulation
 
 
 class CNNLayerNorm(nn.Module):

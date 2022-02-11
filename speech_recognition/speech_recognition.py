@@ -4,9 +4,9 @@ import torchaudio
 from torch import nn
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
-from speech_recognition_module import SpeechRecognitionModel, scheduler, optimizer
-from prepocess import training_data_processing, _blank_code
-from train import train
+from speech_recognition.speech_recognition_module import SpeechRecognitionModel, scheduler, optimizer
+from speech_recognition.prepocess import training_data_processing, _blank_code
+from speech_recognition.train import train
 # from evaluate import evaluate
 
 
