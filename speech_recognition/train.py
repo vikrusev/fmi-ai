@@ -18,7 +18,7 @@ def train(model, device, train_loader, criterion,
             output = F.log_softmax(output, dim=2)
             output = DataManipulation.transpose_position(output, 0)  # (time, batch, n_class)
 
-            loss = criterion(output, labels, input_lengths)
+            loss = criterion(output, labels, input_lengths, label_lengths)
             loss.backward()
 
             experiment.log_metric('loss', loss.item())
