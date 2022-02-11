@@ -1,5 +1,5 @@
 import torch
-from prepocess import DataManipulation
+from speech_recognition.prepocess import DataManipulation
 from torch.nn import functional as F
 
 
